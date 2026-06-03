@@ -1,0 +1,17 @@
+# Bicep / ARM build artifacts
+*.json.bicep
+**/*.arm.json
+main.json
+**/main.json
+
+# PSRule output
+results.sarif
+*.sarif
+.ps-rule/cache/
+
+# OS / editor
+.DS_Store
+.vscode/*.log
+
+# Azure CLI / auth
+.azure/
