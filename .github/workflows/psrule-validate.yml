@@ -1,0 +1,42 @@
+name: Deterministic Compliance Gate (PSRule)
+
+# Runs the audit-grade policy gate on every PR that touches Bicep.
+# This is the authoritative pass/fail. Copilot Code Review runs in parallel and
+# provides explanation + remediation, but does not gate the merge.
+
+on:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'infra/**'
+      - 'ps-rule.yaml'
+      - '.ps-rule/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  psrule:
+    name: Analyze Bicep against FedRAMP baseline
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run PSRule for Azure
+        uses: microsoft/ps-rule@v2
+        with:
+          modules: PSRule.Rules.Azure
+          inputPath: 'infra/'
+          baseline: Azure.Default
+          outputFormat: Sarif
+          outputPath: results.sarif
+          # Fail the job (and the PR check) on any rule failure.
+          summary: true
+
+      - name: Upload SARIF to code scanning
+        if: always()
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: results.sarif

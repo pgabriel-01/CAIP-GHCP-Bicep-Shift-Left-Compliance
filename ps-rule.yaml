@@ -1,0 +1,29 @@
+# PSRule for Azure — deterministic compliance gate.
+# This is the audit-grade pass/fail that runs alongside Copilot Code Review.
+# Copilot explains and remediates; PSRule enforces.
+# Docs: https://azure.github.io/PSRule.Rules.Azure/
+
+requires:
+  PSRule.Rules.Azure: '>=1.30.0'
+
+include:
+  module:
+    - PSRule.Rules.Azure
+
+configuration:
+  # Expand Bicep source files into resources so PSRule can analyze them.
+  AZURE_BICEP_FILE_EXPANSION: true
+  AZURE_BICEP_FILE_EXPANSION_TIMEOUT: 30
+
+input:
+  pathIgnore:
+    # The remediated reference is illustrative; gate the live infra/ path.
+    - 'infra-remediated/**'
+    - '**/*.md'
+    # Modules are expanded via the main entrypoint + .bicepparam; skip expanding
+    # them standalone (they have required params and would warn).
+    - '**/modules/**'
+
+# Baseline selection is done at invocation time, e.g.:
+#   Assert-PSRule -Baseline Azure.Default ...
+# (Azure.Default is a baseline, not a rule name — do not put it under rule.include.)
