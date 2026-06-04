@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" font-family="Segoe UI, Helvetica, Arial, sans-serif" role="img" aria-label="Cost-of-late-feedback curve: the relative cost to remediate a compliance finding rises sharply from the inner loop to the pull request, deploy, and production stages. Copilot plus the deterministic gate move detection and remediation left to the pull request stage.">
+  <defs>
+    <marker id="ax" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#334155"/>
+    </marker>
+    <linearGradient id="curveFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ef4444" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#ef4444" stop-opacity="0.02"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="1280" height="720" fill="#f8fafc"/>
+
+  <!-- Header -->
+  <text x="64" y="64" font-size="28" font-weight="800" fill="#0f172a">The cost of late compliance feedback</text>
+  <text x="64" y="94" font-size="15" fill="#64748b">Detection isn't the bottleneck — interpretation and remediation speed are. The later a finding surfaces, the more it costs to fix.</text>
+
+  <!-- Axes -->
+  <line x1="150" y1="600" x2="1180" y2="600" stroke="#334155" stroke-width="2.5" marker-end="url(#ax)"/>
+  <line x1="150" y1="600" x2="150" y2="150" stroke="#334155" stroke-width="2.5" marker-end="url(#ax)"/>
+  <text x="120" y="150" font-size="14" font-weight="700" fill="#334155" transform="rotate(-90 120 380)" text-anchor="middle">Relative cost &amp; effort to remediate</text>
+  <text x="665" y="660" font-size="14" font-weight="700" fill="#334155" text-anchor="middle">Where the finding surfaces (left → right = later)</text>
+
+  <!-- Curve area + line: rising exponentially -->
+  <path d="M210,560 C 420,540 470,500 560,440 C 700,350 760,250 980,190 L980,600 L210,600 Z" fill="url(#curveFill)"/>
+  <path d="M210,560 C 420,540 470,500 560,440 C 700,350 760,250 980,190" fill="none" stroke="#ef4444" stroke-width="3.5"/>
+
+  <!-- Stage markers -->
+  <!-- Inner loop -->
+  <circle cx="210" cy="560" r="8" fill="#0e7c66"/>
+  <text x="210" y="628" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">Inner loop</text>
+  <text x="210" y="646" text-anchor="middle" font-size="11.5" fill="#64748b">IDE / Copilot inline</text>
+
+  <!-- Pull request -->
+  <circle cx="560" cy="440" r="9" fill="#6f42c1"/>
+  <text x="560" y="628" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">Pull request</text>
+  <text x="560" y="646" text-anchor="middle" font-size="11.5" fill="#64748b">Copilot + PSRule gate</text>
+
+  <!-- Deploy -->
+  <circle cx="770" cy="318" r="8" fill="#ca8a04"/>
+  <text x="770" y="628" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">Deploy</text>
+  <text x="770" y="646" text-anchor="middle" font-size="11.5" fill="#64748b">Azure Policy / Deny</text>
+
+  <!-- Prod -->
+  <circle cx="980" cy="190" r="9" fill="#ef4444"/>
+  <text x="980" y="628" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">Production</text>
+  <text x="980" y="646" text-anchor="middle" font-size="11.5" fill="#64748b">Defender finding / incident</text>
+
+  <!-- Shift-left callout -->
+  <rect x="372" y="300" width="300" height="96" rx="12" fill="#ffffff" stroke="#6f42c1" stroke-width="2"/>
+  <text x="392" y="330" font-size="15" font-weight="800" fill="#6f42c1">Shift the fix left ←</text>
+  <text x="392" y="354" font-size="12.5" fill="#475569">Copilot explains &amp; remediates and the</text>
+  <text x="392" y="372" font-size="12.5" fill="#475569">deterministic gate catches it — at PR time,</text>
+  <text x="392" y="390" font-size="12.5" fill="#475569">before deploy spend or production exposure.</text>
+  <path d="M560 396 L560 432" stroke="#6f42c1" stroke-width="2" stroke-dasharray="5 4"/>
+
+  <!-- right annotation -->
+  <text x="1010" y="186" font-size="12.5" fill="#ef4444" font-weight="700">days + credibility</text>
+  <text x="1010" y="204" font-size="12.5" fill="#ef4444" font-weight="700">to remediate</text>
+</svg>

@@ -1,8 +1,9 @@
-# FedRAMP Moderate Control Catalog (slide-ready)
+# FedRAMP Moderate Control Catalog
 
 This is the human-readable companion to
 [`.github/instructions/bicep-fedramp.instructions.md`](../.github/instructions/bicep-fedramp.instructions.md).
-Use it as a slide or handout. Each row is a planted violation in the demo.
+Each row corresponds to a planted violation in `infra/` and its compliant value in
+`infra-remediated/`.
 
 | # | Control | Control name | Bicep property | Non-compliant (demo) | Compliant |
 |---|---------|--------------|----------------|----------------------|-----------|
@@ -21,19 +22,19 @@ Use it as a slide or handout. Each row is a planted violation in the demo.
 
 ## Why these controls
 
-These map cleanly to a single, well-understood Bicep property each, so the audience
-can see the AI's reasoning land on something concrete and checkable. They also span
-the major control families — boundary, crypto-in-transit, crypto-at-rest, identity,
-least privilege, and audit — which demonstrates breadth without overwhelming a
-one-hour session.
+Each maps cleanly to a single, well-understood Bicep property, so the reasoning
+behind a finding lands on something concrete and checkable. Together they span the
+major control families — boundary protection, cryptography in transit, cryptography
+at rest, identity, least privilege, and audit — demonstrating breadth without
+requiring an exhaustive baseline.
 
-## Honest caveats to state out loud
+## Caveats
 
 - These mappings are **organizational interpretations** of the FedRAMP Moderate
   baseline, encoded as policy. They are intentionally stricter than the minimum in
-  places (e.g. requiring infrastructure encryption).
-- A real ATO package maps controls to **System Security Plan** narratives and
-  evidence, not just resource properties. This demo covers the **technical
+  places (for example, requiring infrastructure encryption).
+- A real authorization package maps controls to **System Security Plan** narratives
+  and evidence, not just resource properties. This catalog covers the **technical
   control** slice only.
 - The authoritative pass/fail is the deterministic gate (PSRule / Azure Policy),
   **not** Copilot.

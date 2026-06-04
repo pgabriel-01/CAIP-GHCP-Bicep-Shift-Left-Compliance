@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" font-family="Segoe UI, Helvetica, Arial, sans-serif" role="img" aria-label="Shift-left compliance reference architecture: a pull request is reviewed in parallel by GitHub Copilot code review and the PSRule deterministic gate, then by a human reviewer, then enforced by Azure Policy at deploy time and monitored by Defender for Cloud at runtime.">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+    <marker id="arrowPurple" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6f42c1"/>
+    </marker>
+    <style>
+      .box { rx: 12; ry: 12; stroke-width: 2; }
+      .title { font-size: 17px; font-weight: 700; fill: #0f172a; }
+      .sub { font-size: 12.5px; fill: #475569; }
+      .lane { font-size: 13px; font-weight: 700; letter-spacing: .04em; }
+      .edge { stroke: #475569; stroke-width: 2; fill: none; }
+      .edgePurple { stroke: #6f42c1; stroke-width: 2; fill: none; stroke-dasharray: 6 5; }
+      .hdr { font-size: 26px; font-weight: 800; fill: #0f172a; }
+      .hdr-sub { font-size: 14px; fill: #64748b; }
+      .pill { font-size: 11.5px; font-weight: 700; fill: #ffffff; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1280" height="720" fill="#f8fafc"/>
+
+  <!-- Header -->
+  <text x="48" y="56" class="hdr">Shift-Left Compliance — parallel-lane, defense-in-depth</text>
+  <text x="48" y="82" class="hdr-sub">GitHub Copilot interprets &amp; remediates · deterministic policy enforces &amp; attests · FedRAMP Moderate / NIST SP 800-53 Rev 5</text>
+
+  <!-- Developer / inner loop -->
+  <rect x="48" y="300" width="170" height="96" class="box" fill="#e2e8f0" stroke="#94a3b8"/>
+  <text x="133" y="338" text-anchor="middle" class="title">Developer</text>
+  <text x="133" y="360" text-anchor="middle" class="sub">writes Bicep</text>
+  <text x="133" y="378" text-anchor="middle" class="sub">Copilot inline + instructions</text>
+
+  <!-- Pull Request -->
+  <rect x="268" y="300" width="150" height="96" class="box" fill="#dbeafe" stroke="#3b82f6"/>
+  <text x="343" y="344" text-anchor="middle" class="title">Pull Request</text>
+  <text x="343" y="366" text-anchor="middle" class="sub">opened on GitHub</text>
+
+  <!-- Catalog (attestable artifact) feeding Copilot -->
+  <rect x="468" y="96" width="316" height="92" class="box" fill="#f3e8ff" stroke="#6f42c1"/>
+  <rect x="468" y="96" width="316" height="24" rx="12" fill="#6f42c1"/>
+  <text x="482" y="113" class="pill">THE ATTESTABLE ARTIFACT (version-controlled)</text>
+  <text x="484" y="146" class="title" font-size="15">.github/instructions/bicep-fedramp.instructions.md</text>
+  <text x="484" y="167" class="sub">control ID → exact Bicep property → compliant value</text>
+  <text x="484" y="183" class="sub">applyTo: **/*.bicep · read on every PR (first 4,000 chars)</text>
+
+  <!-- Copilot lane -->
+  <rect x="468" y="232" width="316" height="118" class="box" fill="#faf5ff" stroke="#6f42c1"/>
+  <text x="486" y="258" class="lane" fill="#6f42c1">AI LANE · advisory, fast (~30s–5m)</text>
+  <text x="486" y="284" class="title" font-size="16">GitHub Copilot code review</text>
+  <text x="486" y="306" class="sub">• explains the risk in plain language</text>
+  <text x="486" y="324" class="sub">• cites the FedRAMP / NIST control</text>
+  <text x="486" y="342" class="sub">• suggests a one-click fix · never blocks merge</text>
+
+  <!-- PSRule lane -->
+  <rect x="468" y="372" width="316" height="118" class="box" fill="#ecfdf5" stroke="#0e7c66"/>
+  <text x="486" y="398" class="lane" fill="#0e7c66">DETERMINISTIC LANE · authoritative gate</text>
+  <text x="486" y="424" class="title" font-size="16">PSRule for Azure (CI)</text>
+  <text x="486" y="446" class="sub">• 500+ rules, baseline Azure.Default</text>
+  <text x="486" y="464" class="sub">• reproducible pass/fail · SARIF → code scanning</text>
+  <text x="486" y="482" class="sub">• wire as required status check to block merge</text>
+
+  <!-- Human reviewer -->
+  <rect x="834" y="300" width="166" height="96" class="box" fill="#fef9c3" stroke="#ca8a04"/>
+  <text x="917" y="338" text-anchor="middle" class="title">Human reviewer</text>
+  <text x="917" y="360" text-anchor="middle" class="sub">faster, informed</text>
+  <text x="917" y="378" text-anchor="middle" class="sub">approval / merge</text>
+
+  <!-- Post-merge guardrails -->
+  <rect x="1050" y="232" width="182" height="80" class="box" fill="#e0f2fe" stroke="#0284c7"/>
+  <text x="1141" y="266" text-anchor="middle" class="title" font-size="15">Azure Policy / Deny</text>
+  <text x="1141" y="288" text-anchor="middle" class="sub">deploy-time guardrail</text>
+
+  <rect x="1050" y="320" width="182" height="76" class="box" fill="#e2e8f0" stroke="#94a3b8"/>
+  <text x="1141" y="352" text-anchor="middle" class="title" font-size="15">Deploy to Azure</text>
+  <text x="1141" y="374" text-anchor="middle" class="sub">IaC provisioning</text>
+
+  <rect x="1050" y="404" width="182" height="84" class="box" fill="#e0f2fe" stroke="#0284c7"/>
+  <text x="1141" y="438" text-anchor="middle" class="title" font-size="15">Defender for Cloud</text>
+  <text x="1141" y="460" text-anchor="middle" class="sub">runtime posture &amp;</text>
+  <text x="1141" y="476" text-anchor="middle" class="sub">compliance dashboard</text>
+
+  <!-- Edges -->
+  <!-- dev -> PR -->
+  <path d="M218 348 L262 348" class="edge" marker-end="url(#arrow)"/>
+  <!-- PR -> copilot lane -->
+  <path d="M418 330 C 440 300, 446 291, 466 291" class="edge" marker-end="url(#arrow)"/>
+  <!-- PR -> psrule lane -->
+  <path d="M418 366 C 440 396, 446 431, 466 431" class="edge" marker-end="url(#arrow)"/>
+  <!-- catalog -> copilot (dashed, grounds it) -->
+  <path d="M626 188 L626 226" class="edgePurple" marker-end="url(#arrowPurple)"/>
+  <!-- copilot -> human -->
+  <path d="M784 291 C 812 300, 808 330, 832 330" class="edge" marker-end="url(#arrow)"/>
+  <!-- psrule -> human -->
+  <path d="M784 431 C 812 396, 808 366, 832 366" class="edge" marker-end="url(#arrow)"/>
+  <!-- human -> azure policy -->
+  <path d="M1000 330 C 1024 300, 1026 272, 1048 272" class="edge" marker-end="url(#arrow)"/>
+  <!-- azure policy -> deploy -->
+  <path d="M1141 312 L1141 318" class="edge" marker-end="url(#arrow)"/>
+  <!-- deploy -> defender -->
+  <path d="M1141 396 L1141 402" class="edge" marker-end="url(#arrow)"/>
+
+  <!-- Footer legend -->
+  <rect x="48" y="556" width="1184" height="120" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+  <circle cx="74" cy="592" r="7" fill="#6f42c1"/>
+  <text x="90" y="597" class="sub" font-size="13"><tspan font-weight="700" fill="#0f172a">Interpretation &amp; remediation (Copilot):</tspan> collapses the time between "a tool said no" and "the developer understands why and ships a fix."</text>
+  <circle cx="74" cy="624" r="7" fill="#0e7c66"/>
+  <text x="90" y="629" class="sub" font-size="13"><tspan font-weight="700" fill="#0f172a">Enforcement &amp; attestation (PSRule / Azure Policy):</tspan> deterministic, reproducible pass/fail — the audit-grade gate that actually blocks the merge and the deployment.</text>
+  <circle cx="74" cy="656" r="7" fill="#ca8a04"/>
+  <text x="90" y="661" class="sub" font-size="13"><tspan font-weight="700" fill="#0f172a">Defense-in-depth:</tspan> Copilot is never a single point of trust — both lanes run in parallel on every PR, and policy + Defender layer in after merge.</text>
+</svg>
