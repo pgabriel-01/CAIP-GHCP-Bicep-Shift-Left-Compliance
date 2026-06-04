@@ -122,12 +122,12 @@ The full mapping, with each planted violation and its compliant value, is in
   words, "only a partial view of your overall compliance status."
 
 > ⚠️ **Known limit — Copilot code review reads only the first 4,000 characters of
-> each instruction file.** `.github/instructions/bicep-fedramp.instructions.md` is
-> currently larger than that, so content past the cap is **not** applied by code
-> review (Copilot Chat and the cloud agent do not share this cap). Keep the
-> highest-value controls near the top, or split the catalog across multiple
-> `**/*.instructions.md` files. This is one more reason the **deterministic gate**,
-> not the prose, is the source of truth.
+> each instruction file** (Copilot Chat and the cloud agent do not share this cap).
+> `.github/instructions/bicep-fedramp.instructions.md` is deliberately kept within
+> that budget so the full catalog is applied on every PR. As the catalog grows,
+> keep the highest-value controls near the top, or split it across multiple
+> `**/*.instructions.md` files. Either way the **deterministic gate**, not the
+> prose, remains the source of truth.
 
 ---
 
